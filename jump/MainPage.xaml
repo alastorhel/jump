@@ -9,10 +9,10 @@
 
     <Grid>
    
-
+       <HorizontalStackLayout  x:Name="stack">
     <Image Source="ceu.png"
            x:Name="noite"
-           Aspect="Fill"
+           Aspect="AspectFill"
               HeightRequest="1000"
            HorizontalOptions="Start"
            VerticalOptions="End"/>
@@ -31,8 +31,84 @@
                   Aspect="Fill"
                   HorizontalOptions="End"
            VerticalOptions="End"/>
+           
+              </HorizontalStackLayout>
 
-                  
+               <HorizontalStackLayout x:Name="stack1">
+    <Image Source="ceu.png"
+           x:Name="noite1"
+           Aspect="Fill"
+              HeightRequest="1000"
+           HorizontalOptions="Start"
+           VerticalOptions="End"/>
+
+           <Image Source="arvores.png"
+                  x:Name="arvores1"
+                    HeightRequest="400"
+                  Aspect="Fill"
+                  HorizontalOptions="End"
+           VerticalOptions="End"/>
+
+
+           <Image Source="chao.png"
+                  x:Name="terra1"
+                  HeightRequest="50"
+                  Aspect="Fill"
+                  HorizontalOptions="End"
+           VerticalOptions="End"/>
+           
+              </HorizontalStackLayout>
+
+                <HorizontalStackLayout x:Name="stack2">
+    <Image Source="ceu.png"
+           x:Name="noite2"
+           Aspect="Fill"
+              HeightRequest="1000"
+           HorizontalOptions="Start"
+           VerticalOptions="End"/>
+
+           <Image Source="arvores.png"
+                  x:Name="arvores2"
+                    HeightRequest="400"
+                  Aspect="Fill"
+                  HorizontalOptions="End"
+           VerticalOptions="End"/>
+
+
+           <Image Source="chao.png"
+                  x:Name="terra2"
+                  HeightRequest="50"
+                  Aspect="Fill"
+                  HorizontalOptions="End"
+           VerticalOptions="End"/>
+           
+              </HorizontalStackLayout>
+
+               <HorizontalStackLayout x:Name="stack3">
+    <Image Source="ceu.png"
+           x:Name="noite3"
+           Aspect="Fill"
+              HeightRequest="1000"
+           HorizontalOptions="Start"
+           VerticalOptions="End"/>
+
+           <Image Source="arvores.png"
+                  x:Name="arvores3"
+                    HeightRequest="400"
+                  Aspect="Fill"
+                  HorizontalOptions="End"
+           VerticalOptions="End"/>
+
+
+           <Image Source="chao.png"
+                  x:Name="terra3"
+                  HeightRequest="50"
+                  Aspect="Fill"
+                  HorizontalOptions="End"
+           VerticalOptions="End"/>
+           
+              </HorizontalStackLayout>
+
 
 
     
