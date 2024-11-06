@@ -44,17 +44,63 @@ public partial class MainPage : ContentPage
 			(a as Image).WidthRequest = w;
 		foreach (var a in stack2)
 			(a as Image).WidthRequest = w;
-		foreach (var a in stack3)
-			(a as Image).WidthRequest = w;
+	
 
-			stack. WidthRequest =w *1.5;
-	stack1.WidthRequest =w *1.5;
-	stack2.WidthRequest =w *1.5;
-	stack3.WidthRequest =w *1.5;
+		stack.WidthRequest = w * 1.5;
+		stack1.WidthRequest = w * 1.5;
+		stack2.WidthRequest = w * 1.5;
+		
 
 	}
 
+	void GerenciaCenarios()
+	{
+		MoveCenario();
+		GerenciaCenarios(stack1);
+		GerenciaCenarios(stack2);
+		
+		GerenciaCenarios(stack);
+
+
+	}
+
+	void MoveCenario()
+	{
+		stack1.TranslationX -= velocidade1;
+		stack2.TranslationX -= velocidade2;
+		stack.TranslationX -= velocidade;
+
+	}
+
+	void GerenciaCenarios(HorizontalStackLayout hsl)
+	{
+		var view =(hsl.Children.First() as Image);
+		if (view.WidthRequest + hsl.TranslationX < 0)
+		{
+			hsl.Children.Remove(view);
+			hsl.Children.Add(view);
+			hsl.TranslationX = view.TranslationX;
+		}
+	}
+
+	async Task Desenha()
+	{
+		while(!estaMorto)
+		{
+			GerenciaCenarios();
+			 await Task.Delay(tempoEntreFrames);
+		}
+	}
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+		Desenha();
+    }
+
+
 	
+
 
 }
 
