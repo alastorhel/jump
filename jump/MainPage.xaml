@@ -58,6 +58,16 @@
                             HeightRequest="80"/>
               </HorizontalStackLayout>
 
+           
+
+               <Image x:Name="imgtigre"/>
+               
+               
+               
+  
+
+
+
 
 
     
