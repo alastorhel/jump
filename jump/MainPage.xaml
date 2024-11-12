@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="jump.MainPage"
+            xmlns:ffimageloading="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
              Shell.NavBarIsVisible="false">
 
 
@@ -60,7 +61,13 @@
 
            
 
-               <Image x:Name="imgtigre"/>
+               <ff:CachedImageView x:Name="imgtigre"
+                      CacheType="Disk"
+                      CacheDuration=""
+                       Source="frame00.png"
+                       HorizontalOptions="Start"
+                            VerticalOptions="End"
+                            HeightRequest="100"/>
                
                
                

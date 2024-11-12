@@ -15,7 +15,7 @@ public class Animacao
 
     int frameAtual = 1;
 
-    protected Image compImagem;
+    protected CachedImageView imageView;
 
 
     public Animacao(Image a)
@@ -42,24 +42,24 @@ public class Animacao
     {
         if (parado)
             return;
-        string nomeArquivo = "";
+        string nomedoarquivo ="";
         int tamanhoAnimacao = 0;
         if (animacaoAtiva == 1)
         {
-            nomeArquivo = animacao1 [frameAtual];
+             nomedoarquivo = animacao1 [frameAtual];
             tamanhoAnimacao = animacao1.Count;
         }
         else if (animacaoAtiva == 2)
         {
-            nomeArquivo = animacao2 [frameAtual];
+            nomedoarquivo = animacao2 [frameAtual];
             tamanhoAnimacao = animacao2.Count;
         }
         else if (animacaoAtiva == 3)
         {
-            nomeArquivo = animacao3 [frameAtual];
+          nomedoarquivo = animacao3 [frameAtual];
             tamanhoAnimacao = animacao3.Count;
         }
-        compImagem.Source = ImageSource.FromFile(nomeArquivo);
+        compImagem.Source = ImageSource.FromFile(nomedoarquivo);
         frameAtual++;
 
         if (frameAtual >= tamanhoAnimacao)

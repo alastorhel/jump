@@ -4,7 +4,7 @@ public delegate void callback();
 
  public class Player : Animacao
  {
-    public Player (Image a) : base (a)
+    public Player (CachedImageView a) : base (a)
     {
         for (int i = 1; i <= 23; ++i)
              animacao1.Add($"frame{i.ToString("D2")}.png");
