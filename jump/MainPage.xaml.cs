@@ -23,6 +23,18 @@ public partial class MainPage : ContentPage
 	int larguraJanela = 0;
 	int alturaJanela = 0;
 
+	const int forcaGravidade = 6;
+	bool estaNoChao = true;
+	bool estaNoAr = false;
+
+	int tempoPulando = 0;
+	int tempoNoAr = 0;
+	const int forcaPulo = 8;
+	const int maxTempoPulando = 6;
+	const int maxTempoNoAr = 4;
+
+
+
 	Player player;
 
 	protected override void OnSizeAllocated(double w, double h)
@@ -48,12 +60,12 @@ public partial class MainPage : ContentPage
 			(a as Image).WidthRequest = w;
 		foreach (var a in stack2)
 			(a as Image).WidthRequest = w;
-	
+
 
 		stack.WidthRequest = w * 1.5;
 		stack1.WidthRequest = w * 1.5;
 		stack2.WidthRequest = w * 1.5;
-		
+
 
 	}
 
@@ -62,7 +74,7 @@ public partial class MainPage : ContentPage
 		MoveCenario();
 		GerenciaCenarios(stack1);
 		GerenciaCenarios(stack2);
-		
+
 		GerenciaCenarios(stack);
 
 
@@ -78,7 +90,7 @@ public partial class MainPage : ContentPage
 
 	void GerenciaCenarios(HorizontalStackLayout hsl)
 	{
-		var view =(hsl.Children.First() as Image);
+		var view = (hsl.Children.First() as Image);
 		if (view.WidthRequest + hsl.TranslationX < 0)
 		{
 			hsl.Children.Remove(view);
@@ -89,22 +101,66 @@ public partial class MainPage : ContentPage
 
 	async Task Desenha()
 	{
-		while(!estaMorto)
+		while (!estaMorto)
 		{
 			GerenciaCenarios();
-			player.Desenha();
-			 await Task.Delay(tempoEntreFrames);
+			await Task.Delay(tempoEntreFrames);
+			if (!estaPulando && !estaNoAr)
+			{
+				AplicaGravidade();
+				player.Desenha();
+			}
+			else
+				AplicaPulo();
+			await Task.Delay(tempoEntreFrames);
 		}
 	}
 
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
+	protected override void OnAppearing()
+	{
+		base.OnAppearing();
 		Desenha();
-    }
+	}
+
+	void AplicaGravidade()
+	{
+		if (player.GetY() < 0)
+			player.MoveY(forcaGravidade);
+		else if (player.GetY() >= 0)
+		{
+			player.SetY(0);
+			estaNoChao = true;
+		}
+	}
+
+	void AplicaPulo()
+	{
+		estaNoChao = false;
+		if (estaPulando && tempoPulando >= 6)
+		{
+			estaPulando = false;
+			estaNoAr = false;
+			tempoPulando = 0;
+			tempoNoAr = 0;
+		}
+		else if (estaNoAr && tempoNoAr >= 4)
+		{
+			estaPulando = false;
+			estaNoAr = false;
+			tempoPulando = 0;
+			tempoNoAr = 0;
+		}
+		else if (estaPulando && tempoPulando < 6)
+		{
+			player.MoveY(-forcaPulo);
+			tempoPulando++;
+		}
+		else if (estaNoAr)
+			tempoNoAr++;
+	}
 
 
-	
+
 
 
 }
