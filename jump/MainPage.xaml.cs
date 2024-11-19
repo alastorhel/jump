@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 
 namespace jump;
+using FFImageLoading.Maui;
 
 public partial class MainPage : ContentPage
 {

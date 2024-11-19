@@ -14,7 +14,7 @@ public class Animacao
 
     bool parado = true;
 
-    int frameAtual = 1;
+    int frameAtual = 1; 
 
     protected CachedImageView imageView;
 
