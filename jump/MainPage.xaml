@@ -9,6 +9,10 @@
 
 
     <Grid>
+
+           <Grid.GestureRecognizers>
+              <TapGestureRecognizer Tapped="OnGridClicked"/>
+              </Grid.GestureRecognizers>
               <HorizontalStackLayout x:Name="stack1">
                      <Image Source="ceu.png"
                             Aspect="Fill"
@@ -69,6 +73,41 @@
                             VerticalOptions="End"
                             WidthRequest="220"
                             HeightRequest="240"/>
+
+                             <Image Source="pedra.png"
+                                   x:Name="imgpedra"
+                              Aspect="AspectFill"
+                             HorizontalOptions="End"
+                            VerticalOptions="End"
+                               WidthRequest="100"
+                            HeightRequest="180"/>
+
+                            
+                             <Image Source="cacador.png"
+                                   x:Name="imgcacador"
+                              Aspect="AspectFill"
+                            HorizontalOptions="End"
+                            VerticalOptions="End"
+                               WidthRequest="160"
+                            HeightRequest="200"/>
+
+                            <Image Source="foguinho.png"
+                                   x:Name="imgfoguinho"
+                              Aspect="AspectFill"
+                            HorizontalOptions="End"
+                            VerticalOptions="End"
+                               WidthRequest="100"
+                            HeightRequest="150"/>
+
+                             <Image Source="armadilha.png"
+                                   x:Name="imgarmadilha"
+                              Aspect="AspectFill"
+                            HorizontalOptions="End"
+                            VerticalOptions="End"
+                            WidthRequest="100"
+                            HeightRequest="120"/>
+
+
                
 
     </Grid>

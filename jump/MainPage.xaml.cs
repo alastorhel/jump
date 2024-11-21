@@ -24,15 +24,17 @@ public partial class MainPage : ContentPage
 	int larguraJanela = 0;
 	int alturaJanela = 0;
 
-	const int forcaGravidade = 6;
+	const int forcaGravidade = 1;
 	bool estaNoChao = true;
 	bool estaNoAr = false;
 
 	int tempoPulando = 0;
 	int tempoNoAr = 0;
-	const int forcaPulo = 8;
-	const int maxTempoPulando = 6;
+	const int forcaPulo = 4;
+	const int maxTempoPulando = 8;
 	const int maxTempoNoAr = 4;
+
+	Inimigos inimigos;
 
 
 
@@ -43,6 +45,11 @@ public partial class MainPage : ContentPage
 		base.OnSizeAllocated(w, h);
 		CorrigeTamanhoCenario(w, h);
 		CalculaVelocidade(w);
+		inimigos = new Inimigos(-w);
+		inimigos.Add(new Inimigo(imgpedra));
+		inimigos.Add(new Inimigo(imgcacador));
+		inimigos.Add(new Inimigo(imgfoguinho));
+		inimigos.Add(new Inimigo(imgarmadilha));
 	}
 
 	void CalculaVelocidade(double w)
@@ -105,6 +112,8 @@ public partial class MainPage : ContentPage
 		while (!estaMorto)
 		{
 			GerenciaCenarios();
+			if (inimigos != null)
+				inimigos.Desenha(velocidade);
 			await Task.Delay(tempoEntreFrames);
 			if (!estaPulando && !estaNoAr)
 			{
@@ -137,27 +146,33 @@ public partial class MainPage : ContentPage
 	void AplicaPulo()
 	{
 		estaNoChao = false;
-		if (estaPulando && tempoPulando >= 6)
+		if (estaPulando && tempoPulando >= maxTempoPulando)
 		{
 			estaPulando = false;
 			estaNoAr = false;
 			tempoPulando = 0;
 			tempoNoAr = 0;
 		}
-		else if (estaNoAr && tempoNoAr >= 4)
+		else if (estaNoAr && tempoNoAr >= maxTempoNoAr)
 		{
 			estaPulando = false;
 			estaNoAr = false;
 			tempoPulando = 0;
 			tempoNoAr = 0;
 		}
-		else if (estaPulando && tempoPulando < 6)
+		else if (estaPulando && tempoPulando < maxTempoPulando)
 		{
 			player.MoveY(-forcaPulo);
 			tempoPulando++;
 		}
 		else if (estaNoAr)
 			tempoNoAr++;
+	}
+
+	void OnGridClicked(object o, TappedEventArgs a)
+	{
+		if(estaNoChao)
+		   estaPulando = true;
 	}
 
 
