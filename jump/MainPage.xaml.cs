@@ -30,9 +30,9 @@ public partial class MainPage : ContentPage
 
 	int tempoPulando = 0;
 	int tempoNoAr = 0;
-	const int forcaPulo = 4;
-	const int maxTempoPulando = 8;
-	const int maxTempoNoAr = 4;
+	const int forcaPulo = 100;
+	const int maxTempoPulando = 20;
+	const int maxTempoNoAr = 200;
 
 	Inimigos inimigos;
 
